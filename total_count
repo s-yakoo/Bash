@@ -1,0 +1,18 @@
+#!/bin/bash
+
+awk '/#vibrio#prokka#/{count1++;next} /#firmicutes#prokka#/{count2++;next} /#bacteroides#prokka#/{count3++;next} /#vibrio#rast#/{count4++;next} /#firmicutes#rast#/{count5++;next} /#bacteroides#rast#/{count6++;next} /#vibrio#interprot#/{count7++;next} /#firmicutes#interprot#/{count8++;next} /#bacteroides#interprot#/{count9++;next} END{print "#vibrio#prokka# ",count1 RS "#firmicutes#prokka# ",count2 RS "#bacteroides#prokka ",count3 RS "#vibrio#rast# ",count4 RS "#firmicutes#rast# ",count5 RS "#bacteroides#rast# ",count6 RS "#vibrio#interprot# ",count7 RS "#firmicutes#interprot# ",count8 RS "#bacteroides#interprot# ",count9}' super_final_clean_cluster.clstr > total_count.txt
+
+
+cat total_count.txt
+
+
+
+
+
+
+
+
+
+
+
+
