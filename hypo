@@ -1,0 +1,37 @@
+#!/bin/bash
+
+var=$(grep "unknown" tools_all_names.clstr | grep -c "#vibrio#interprot#"
+grep "unknown" tools_all_names.clstr | grep -c "#firmicutes#interprot#"
+grep "unknown" tools_all_names.clstr | grep -c "#bacteroides#interprot#"
+grep "unknown" tools_all_names.clstr | grep -c "#vibrio#rast#"
+grep "unknown" tools_all_names.clstr | grep -c "#bacteroides#rast#"
+grep "unknown" tools_all_names.clstr | grep -c "#firm#rast#"
+grep "#hypothetical protein#" tools_all_names.clstr | grep -c "#ED#prokka"
+grep "#hypothetical protein#" tools_all_names.clstr | grep -c "#firmicutes#prokka"
+grep "#hypothetical protein#" tools_all_names.clstr | grep -c "#bacteroides#prokka"
+grep "hypothetical protein" tools_all_names.clstr | grep -c "#vibrio#interprot#"
+grep "hypothetical protein" tools_all_names.clstr | grep -c "#firmicutes#interprot#"
+grep "hypothetical protein" tools_all_names.clstr | grep -c "#bacteroides#interprot#"
+grep "hypothetical protein" tools_all_names.clstr | grep -c "#vibrio#rast#"
+grep "hypothetical protein" tools_all_names.clstr | grep -c "#firm#rast#"
+grep "hypothetical protein" tools_all_names.clstr | grep -c "#bacteroides#rast#")
+
+
+### this puts the output of the command (which is only the sum value) into the variable called var
+
+echo $var | awk '{print "vibrio_interpro=",$1 += $10,"\n","firmicutes_interpro=", $2 += $11,"\n","bacteroides_interpro=",$3 += $12,"\n", "vibrio_rast=", $4 += $13,"\n","firm_rast=", $6 += $14, "\n", "bacteroides_rast=", $5 += $15, "\n", "vibrio_prokka=", $7, "\n", "firm_prokka=", $8, "\n", "bacteroides_prokka=",$9}' > hypothetical_counts.txt
+
+
+
+
+cat hypothetical_counts.txt
+
+
+
+
+
+
+
+
+
+
